@@ -38,13 +38,13 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         // Turn on the Player action map
-        InputActions.FindActionMap("Player").Enable();
+        InputActions.FindActionMap("Player")?.Enable();
     }
 
     private void OnDisable()
     {
         // Turn off the Player action map when this is disabled
-        InputActions.FindActionMap("Player").Disable();
+        InputActions.FindActionMap("Player")?.Disable();
     }
 
     // Update() is called once per frame (60-120 frames per second)
