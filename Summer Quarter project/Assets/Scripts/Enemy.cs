@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.isGameOver) return; 
+
         if (target != null)
         {
             agent.SetDestination(target.position);
@@ -24,8 +26,11 @@ public class Enemy : MonoBehaviour
 
         if (player != null)
         {
-            Debug.Log($"{gameObject.name} hit {collision.gameObject.name}!");
+            //GameManager.Instance.GameOver();
         }
     }
+
+    
+
 }
 

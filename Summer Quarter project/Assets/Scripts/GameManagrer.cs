@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     // Stores the one (and only) instance of this script
     public static GameManager Instance {get; private set;}
-    [SerializeField] public static bool isGameOver = false;
+    [SerializeField] public static bool isGameOver = false; // A flag to determine if the game is over or not
 
     private void Awake()
     {
@@ -21,26 +22,34 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        isGameOver = false; 
+        // Reset the game over flag
+        isGameOver = false;
     } 
 
     public void GameOver()
     {
-        if (isGameOver) return; 
+        if (isGameOver) return; // Do nothing if the game is already over 
 
+        // Set the game to be over
         isGameOver = true;
-
-        UIManager.Instance.ToggleGameOverUI(false);
-        
+        // Trigger Game Over UI
+        UIManager.Instance.ToggleGameOverUI(true);
     }
-    public void LoudMainMenu()
+
+    public void LoadMainMenu()
     {
+        // Play UI Audio
+        AudioManager.Instance.PlaySound("UI-Confirm");
+        // Load the Main Menu Scene
         SceneManager.LoadScene(0);
     }
 
-    public virtual LoadCurrentScene()
+    public void LoadCurrentScene()
     {
-        SceneManager.LoudScene(SceneManager.GetActiveScene().buildIndex);
+        // Play UI Audio
+        AudioManager.Instance.PlaySound("UI-Confirm");
+        // Restarts the currently active scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

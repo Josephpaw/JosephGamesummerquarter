@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     // Update() is called once per frame (60-120 frames per second)
     private void Update()
     {
+        if (GameManager.isGameOver) return; 
         // Read & store movement input from the action sheet
         moveInput = moveAction.ReadValue<UnityEngine.Vector2>();
 
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (GameManager.isGameOver) return; 
         UnityEngine.Vector3 moveDirection = new UnityEngine.Vector3(
             moveInput.x,
             0f,
@@ -81,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump()
     {
+        if (GameManager.isGameOver) return; 
         if (IsGrounded())
         {
             rb.AddForce(UnityEngine.Vector3.up * jumpForce, ForceMode.Impulse);
