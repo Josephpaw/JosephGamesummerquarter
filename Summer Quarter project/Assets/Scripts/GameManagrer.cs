@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        // Play UI Audio
+        // Play UI Audio 
         AudioManager.Instance.PlaySound("UI-Confirm");
         // Load the Main Menu Scene
         SceneManager.LoadScene(0);
@@ -49,7 +49,22 @@ public class GameManager : MonoBehaviour
         // Play UI Audio
         AudioManager.Instance.PlaySound("UI-Confirm");
         // Restarts the currently active scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
     }
 
+    public void PlayGame()
+    {
+        // Play UI Audio 
+        AudioManager.Instance.PlaySound("UI-Confirm");
+        // Load the Main Menu Scene
+        SceneManager.LoadScene(1);
+    }
+   public void ResetGame()
+    {
+        // Load the next scene in the build index (the game scene)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+    }
+    
 }
+
+
